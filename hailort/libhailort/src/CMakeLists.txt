@@ -210,6 +210,15 @@ install(FILES
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/HailoRT
     COMPONENT libhailort
 )
+install(TARGETS hef_proto
+        EXPORT HailoRTTargets
+        DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(TARGETS profiler_proto
+        EXPORT HailoRTTargets
+        DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(TARGETS scheduler_mon_proto
+        EXPORT HailoRTTargets
+        DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(EXPORT HailoRTTargets
     FILE HailoRTTargets.cmake
     NAMESPACE HailoRT::
