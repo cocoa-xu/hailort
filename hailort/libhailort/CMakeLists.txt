@@ -20,12 +20,12 @@ if(CMAKE_HOST_WIN32)
     # https://github.com/protocolbuffers/protobuf/tree/master/cmake#notes-on-compiler-warnings
     target_compile_options(hef_proto PRIVATE /wd4244)
 endif()
-get_filename_component(PROTO_HEADER_DIRECTORY ${PROTO_HEF_HEADER} DIRECTORY)
-target_include_directories(hef_proto
-    PUBLIC
-    $<BUILD_INTERFACE: ${PROTO_HEADER_DIRECTORY}>
-    $<BUILD_INTERFACE: ${Protobuf_INCLUDE_DIRS}>
-)
+# get_filename_component(PROTO_HEADER_DIRECTORY ${PROTO_HEF_HEADER} DIRECTORY)
+# target_include_directories(hef_proto
+#     PUBLIC
+#     $<BUILD_INTERFACE: ${PROTO_HEADER_DIRECTORY}>
+#     $<BUILD_INTERFACE: ${Protobuf_INCLUDE_DIRS}>
+# )
 
 protobuf_generate_cpp(PROTO_SCHEDULER_MON_SRC PROTO_SCHEDULER_MON_HEADR scheduler_mon.proto)
 add_library(scheduler_mon_proto ${PROTO_SCHEDULER_MON_SRC} ${PROTO_SCHEDULER_MON_HEADR})
@@ -34,12 +34,12 @@ set_target_properties(scheduler_mon_proto PROPERTIES CXX_STANDARD 14 GENERATED T
 if(CMAKE_HOST_WIN32)
     target_compile_options(scheduler_mon_proto PRIVATE /wd4244)
 endif()
-get_filename_component(PROTO_SCHEDULER_MON_HEADER_DIRECTORY ${PROTO_SCHEDULER_MON_HEADR} DIRECTORY)
-target_include_directories(scheduler_mon_proto
-    PUBLIC
-    $<BUILD_INTERFACE: ${PROTO_SCHEDULER_MON_HEADER_DIRECTORY}>
-    $<BUILD_INTERFACE: ${Protobuf_INCLUDE_DIRS}>
-)
+# get_filename_component(PROTO_SCHEDULER_MON_HEADER_DIRECTORY ${PROTO_SCHEDULER_MON_HEADR} DIRECTORY)
+# target_include_directories(scheduler_mon_proto
+#     PUBLIC
+#     $<BUILD_INTERFACE: ${PROTO_SCHEDULER_MON_HEADER_DIRECTORY}>
+#     $<BUILD_INTERFACE: ${Protobuf_INCLUDE_DIRS}>
+# )
 
 protobuf_generate_cpp(PROTO_PROFILER_SRC PROTO_PROFILER_HEADR tracer_profiler.proto)
 add_library(profiler_proto ${PROTO_PROFILER_SRC} ${PROTO_PROFILER_HEADR})
@@ -51,8 +51,8 @@ endif()
 get_filename_component(PROTO_PROFILER_HEADER_DIRECTORY ${PROTO_PROFILER_HEADR} DIRECTORY)
 target_include_directories(profiler_proto
     PUBLIC
-    $<BUILD_INTERFACE: ${PROTO_PROFILER_HEADER_DIRECTORY}>
-    $<BUILD_INTERFACE: ${Protobuf_INCLUDE_DIRS}>
+    $<BUILD_INTERFACE:${PROTO_PROFILER_HEADER_DIRECTORY}>
+    # $<BUILD_INTERFACE: ${Protobuf_INCLUDE_DIRS}>
 )
 
 add_subdirectory(src)
