@@ -1,11 +1,10 @@
 cmake_minimum_required(VERSION 3.5.0)
 
-include(${HAILO_EXTERNALS_CMAKE_SCRIPTS}/spdlog.cmake)
 include(${HAILO_EXTERNALS_CMAKE_SCRIPTS}/readerwriterqueue.cmake)
 include(${HAILO_EXTERNALS_CMAKE_SCRIPTS}/xxhash.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/../cmake/common_compiler_options.cmake)
 
-
+find_package(spdlog REQUIRED)
 set(HAILORT_COMMON_CPP_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/utils.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/barrier.cpp
