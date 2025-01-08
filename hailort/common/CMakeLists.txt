@@ -4,6 +4,7 @@ include(${HAILO_EXTERNALS_CMAKE_SCRIPTS}/readerwriterqueue.cmake)
 include(${HAILO_EXTERNALS_CMAKE_SCRIPTS}/xxhash.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/../cmake/common_compiler_options.cmake)
 
+set(spdlog_DIR "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/spdlog/")
 find_package(spdlog REQUIRED)
 set(HAILORT_COMMON_CPP_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/utils.cpp
