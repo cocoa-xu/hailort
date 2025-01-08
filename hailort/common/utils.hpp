@@ -18,7 +18,7 @@
 
 #include "common/file_utils.hpp"
 #include "common/logger_macros.hpp"
-#include <fmt/core.h>
+#include <spdlog/fmt/bundled/core.h>
 
 #define XXH_INLINE_ALL 1
 #include "xxhash.h"
